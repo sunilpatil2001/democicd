@@ -26,6 +26,7 @@ modules:
           srv-url: ${default-url}
     requires:
       - name: myapp-db
+      - name: myapp-auth
 
   - name: myapp-db-deployer
     type: hdb
@@ -41,3 +42,12 @@ resources:
     parameters:
       service: hana
       service-plan: hdi-shared
+  - name: myapp-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: myapp-${org}-${space}
+        tenant-mode: dedicated

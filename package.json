@@ -10,6 +10,7 @@
     "@sap/cds-hana": "^2",
     "@sap/hana-client": "^2.21.28",
     "@sap/hdi-deploy": "^5.2.1",
+    "@sap/xssec": "^4",
     "express": "^4"
   },
   "devDependencies": {
@@ -23,7 +24,10 @@
   },
   "cds": {
     "requires": {
-      "db": "hana"
+      "db": "hana",
+      "[production]": {
+        "auth": "xsuaa"
+      }
     }
   }
 }
